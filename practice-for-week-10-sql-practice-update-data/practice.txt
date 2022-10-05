@@ -1,0 +1,23 @@
+ethannguyen@ethans-mbp sql-practice % sqlite3 practice.db
+SQLite version 3.37.0 2021-12-09 01:34:53
+Enter ".help" for usage hints.
+sqlite> .read seed-data.sql
+1|Ryan|Pond
+2|Sky|Tyler
+3|Morgan|Jones
+4|Shannon|Noble
+5|River|Song
+sqlite> update friends
+   ...> set first_name = 'Ryder'
+   ...> where last_name = 'Pond';
+sqlite> .mode box
+sqlite> select * from friends;
+┌────┬────────────┬───────────┐
+│ id │ first_name │ last_name │
+├────┼────────────┼───────────┤
+│ 1  │ Ryder      │ Pond      │
+│ 2  │ Sky        │ Tyler     │
+│ 3  │ Morgan     │ Jones     │
+│ 4  │ Shannon    │ Noble     │
+│ 5  │ River      │ Song      │
+└────┴────────────┴───────────┘
