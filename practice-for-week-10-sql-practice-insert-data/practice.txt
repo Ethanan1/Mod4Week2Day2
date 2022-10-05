@@ -1,0 +1,61 @@
+ethannguyen@ethans-mbp practice-for-week-10-sql-practice-insert-data % sqlite3 practice.db
+SQLite version 3.37.0 2021-12-09 01:34:53
+Enter ".help" for usage hints.
+sqlite> CREATE TABLE friends (
+   ...> id INTEGER PRIMARY KEY AUTOINCREMENT,
+   ...> first_name VARCHAR(255) NOT NULL,
+   ...> last_name VARCHAR(255) NOT NULL);
+sqlite> INSERT INTO friends
+   ...> VALUES
+   ...> (null, 'Amy', 'Pond');
+sqlite> SELECT * FROM friends;
+1|Amy|Pond
+sqlite> .mode box
+sqlite> SELECT * FROM friends;
+┌────┬────────────┬───────────┐
+│ id │ first_name │ last_name │
+├────┼────────────┼───────────┤
+│ 1  │ Amy        │ Pond      │
+└────┴────────────┴───────────┘
+sqlite> INSERT INTO friends
+   ...> VALUES
+   ...> (null, "Rose", "Tyler"),
+   ...> (null, "Martha", "Jones"),
+   ...> (null, "Donna", "Noble"),
+   ...> (null, "River", "Song");
+sqlite> SELECT * FROM friends
+   ...> SELECT * FROM friends;
+Error: in prepare, near "SELECT": syntax error (1)
+sqlite> SELECT * FROM friends;
+┌────┬────────────┬───────────┐
+│ id │ first_name │ last_name │
+├────┼────────────┼───────────┤
+│ 1  │ Amy        │ Pond      │
+│ 2  │ Rose       │ Tyler     │
+│ 3  │ Martha     │ Jones     │
+│ 4  │ Donna      │ Noble     │
+│ 5  │ River      │ Song      │
+└────┴────────────┴───────────┘
+sqlite> INSERT INTO friends (id, first_name, last_name)
+   ...> VALUES (5, 'Jenny', 'Who');
+Error: stepping, UNIQUE constraint failed: friends.id (19)
+sqlite> INSERT INTO friends (id, first_name, last_name)
+   ...> VALUES (null, 'Jenny', 'Who');
+sqlite> select * from friends
+   ...> s
+   ...> ;
+┌────┬────────────┬───────────┐
+│ id │ first_name │ last_name │
+├────┼────────────┼───────────┤
+│ 1  │ Amy        │ Pond      │
+│ 2  │ Rose       │ Tyler     │
+│ 3  │ Martha     │ Jones     │
+│ 4  │ Donna      │ Noble     │
+│ 5  │ River      │ Song      │
+│ 6  │ Jenny      │ Who       │
+└────┴────────────┴───────────┘
+Can also insert data without using all col
+
+=> INSERT INTO friends (first_name, last_name)
+=> VALUES ("Bob", "Bob");
+
